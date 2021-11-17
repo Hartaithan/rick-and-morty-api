@@ -31,7 +31,7 @@ function Filters(props: any) {
             aria-label="Status select"
             onChange={(e) => setInputs({ ...inputs, status: e.target.value })}
           >
-            <option>Choose status...</option>
+            <option value="">Choose status...</option>
             <option value="alive">Alive</option>
             <option value="dead">Dead</option>
             <option value="unknown">Unknown</option>
@@ -42,7 +42,7 @@ function Filters(props: any) {
             aria-label="Gender select"
             onChange={(e) => setInputs({ ...inputs, gender: e.target.value })}
           >
-            <option>Choose gender...</option>
+            <option value="">Choose gender...</option>
             <option value="male">Male</option>
             <option value="female">Female</option>
             <option value="genderless">Genderless</option>
@@ -50,7 +50,7 @@ function Filters(props: any) {
           </Form.Select>
         </Col>
         <Col xs={12} md={4}>
-          <Button className="w-100 h-100" onClick={handleSubmit}>
+          <Button className="w-100 h-100" onClick={() => handleSubmit()}>
             Search
           </Button>
         </Col>

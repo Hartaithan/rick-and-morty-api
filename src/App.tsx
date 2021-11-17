@@ -1,12 +1,19 @@
 import "./styles/global.scss";
 import React from "react";
 import axios from "axios";
-import { Container } from "react-bootstrap";
+import { Container, Spinner } from "react-bootstrap";
 import Filters from "./components/Filters";
 import List from "./components/List";
+import DetailModal from "./components/DetailModal";
 
 function App() {
   const [characters, setCharacters] = React.useState([]);
+  const [isLoading, setLoading] = React.useState(true);
+  const [modal, setModal] = React.useState({
+    id: null,
+    isShow: false,
+    isLoading: true,
+  });
   const [inputs, setInputs] = React.useState({
     name: "",
     type: "",
@@ -18,6 +25,7 @@ function App() {
   function getCharacters() {
     axios.get("https://rickandmortyapi.com/api/character").then(({ data }) => {
       setCharacters(data.results);
+      setLoading(false);
     });
   }
 
@@ -25,13 +33,15 @@ function App() {
     getCharacters();
   }, []);
 
-  function handleSumbit() {
+  function handleSubmit() {
+    setLoading(true);
     axios
       .get(
         `https://rickandmortyapi.com/api/character/?name=${inputs.name}&type=${inputs.type}&species=${inputs.species}&status=${inputs.status}&gender=${inputs.gender}`
       )
       .then(({ data }) => {
         setCharacters(data.results);
+        setLoading(false);
       });
   }
 
@@ -39,11 +49,18 @@ function App() {
     <div className="App">
       <Container>
         <Filters
-          handleSumbit={handleSumbit()}
+          handleSubmit={handleSubmit}
           inputs={inputs}
           setInputs={setInputs}
         />
-        <List characters={characters} />
+        {isLoading ? (
+          <Spinner animation="border" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </Spinner>
+        ) : (
+          <List characters={characters} modal={modal} setModal={setModal} />
+        )}
+        <DetailModal modal={modal} setModal={setModal} />
       </Container>
     </div>
   );
