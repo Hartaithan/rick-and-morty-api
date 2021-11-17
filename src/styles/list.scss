@@ -1,0 +1,10 @@
+.list {
+  .card {
+    flex-direction: row;
+    padding: 1rem;
+    &_img {
+      height: 100px;
+      width: 100px;
+    }
+  }
+}
