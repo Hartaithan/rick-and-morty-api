@@ -3,9 +3,40 @@ import axios from "axios";
 import "../styles/modal.scss";
 import { Modal, Spinner, Accordion } from "react-bootstrap";
 
-function DetailModal(props: any) {
-  const { modal, setModal } = props;
-  const [details, setDetails] = React.useState<any>({});
+type modalTypes = {
+  id: number | null;
+  isShow: boolean;
+  isLoading: boolean;
+};
+
+type detailsReponse = {
+  id: number;
+  name: string;
+  status: string;
+  species: string;
+  type: string;
+  gender: string;
+  origin: {
+    name: string;
+    url: string;
+  };
+  location: {
+    name: string;
+    url: string;
+  };
+  image: string;
+  episode: string[];
+  url: string;
+  created: string;
+};
+
+export interface DetailModalProps {
+  modal: modalTypes;
+  setModal: React.Dispatch<React.SetStateAction<modalTypes>>;
+}
+
+function DetailModal({ modal, setModal }: DetailModalProps) {
+  const [details, setDetails] = React.useState<detailsReponse | null>(null);
 
   React.useEffect(() => {
     if (modal.isShow) {
@@ -39,43 +70,47 @@ function DetailModal(props: any) {
             <Modal.Title>
               <img
                 className="card_img"
-                src={details.image}
-                alt={details.name}
+                src={details?.image}
+                alt={details?.name || "character image"}
               />
-              <p>{details.name}</p>
+              <p>{details?.name}</p>
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <div className="detailModal_item">
               <div className="detailModal_item_title">Gender:</div>
-              <div className="detailModal_item_value">{details.gender}</div>
+              <div className="detailModal_item_value">{details?.gender}</div>
             </div>
             <div className="detailModal_item">
               <div className="detailModal_item_title">Status:</div>
-              <div className="detailModal_item_value">{details.status}</div>
+              <div className="detailModal_item_value">{details?.status}</div>
             </div>
             <div className="detailModal_item">
               <div className="detailModal_item_title">Species:</div>
-              <div className="detailModal_item_value">{details.species}</div>
+              <div className="detailModal_item_value">{details?.species}</div>
             </div>
             <div className="detailModal_item">
               <div className="detailModal_item_title">Origin:</div>
               <div className="detailModal_item_value">
-                <a href={details.origin.url}>{details.origin.name}</a>
+                <a href={details?.origin.url || "character image"}>
+                  {details?.origin.name}
+                </a>
               </div>
             </div>
             <div className="detailModal_item">
               <div className="detailModal_item_title">Location:</div>
               <div className="detailModal_item_value">
-                <a href={details.location.url}>{details.location.name}</a>
+                <a href={details?.location.url || "#"}>
+                  {details?.location.name}
+                </a>
               </div>
             </div>
             <Accordion>
               <Accordion.Item eventKey="0">
-                <Accordion.Header>{`Episodes (${details.episode.length})`}</Accordion.Header>
+                <Accordion.Header>{`Episodes (${details?.episode.length})`}</Accordion.Header>
                 <Accordion.Body>
                   <div className="detailModal_item_value episodes">
-                    {details.episode.map((ep: string) => {
+                    {details?.episode.map((ep: string) => {
                       return <a href={ep}>{ep.split("episode/")[1]}</a>;
                     })}
                   </div>
