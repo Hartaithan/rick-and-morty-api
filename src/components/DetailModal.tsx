@@ -92,17 +92,21 @@ function DetailModal({ modal, setModal }: DetailModalProps) {
             <div className="detailModal_item">
               <div className="detailModal_item_title">Origin:</div>
               <div className="detailModal_item_value">
-                <a href={details?.origin.url || "character image"}>
-                  {details?.origin.name}
-                </a>
+                {details?.origin.name === "unknown" ? (
+                  <p>{details?.origin.name}</p>
+                ) : (
+                  <a href={details?.origin.url}>{details?.origin.name}</a>
+                )}
               </div>
             </div>
             <div className="detailModal_item">
               <div className="detailModal_item_title">Location:</div>
               <div className="detailModal_item_value">
-                <a href={details?.location.url || "#"}>
-                  {details?.location.name}
-                </a>
+                {details?.location.name === "unknown" ? (
+                  <p>{details?.location.name}</p>
+                ) : (
+                  <a href={details?.location.url}>{details?.location.name}</a>
+                )}
               </div>
             </div>
             <Accordion>
