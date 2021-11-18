@@ -10,13 +10,14 @@
     }
     &_descr {
       display: flex;
+      width: fit-content;
       flex-direction: column;
       margin-left: 12px;
       flex-grow: 1;
     }
     &_name {
+      width: 140px;
       font-weight: 600;
-      width: 150px;
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
