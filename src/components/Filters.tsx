@@ -7,7 +7,7 @@ function Filters(props: any) {
 
   return (
     <div className="filters">
-      <Row className="mb-4">
+      <Row>
         <Col xs={12} md={4}>
           <Form.Control
             placeholder="Enter name..."

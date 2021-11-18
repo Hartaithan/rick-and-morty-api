@@ -8,7 +8,7 @@ function List(props: any) {
     <div className="list">
       <Row>
         {characters.map((char: any) => (
-          <Col className="card_col" xs={6} xl={3} key={char.name}>
+          <Col className="card_col" xs={12} md={6} xl={3} key={char.name}>
             <div className="card">
               <img className="card_img" src={char.image} alt={char.name} />
               <div className="card_descr">
