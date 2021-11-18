@@ -1,0 +1,41 @@
+.detailModal {
+  .modal {
+    &-title {
+      display: flex;
+      img {
+        height: 50px;
+        width: 50px;
+      }
+      p {
+        margin: auto 0;
+        margin-left: 12px;
+      }
+    }
+  }
+  .accordion {
+    margin-top: 12px;
+  }
+  &_item {
+    display: flex;
+    &_title {
+      width: 100px;
+      min-width: 100px;
+    }
+    &_value {
+      display: flex;
+      flex-wrap: wrap;
+      &.episodes {
+        flex-wrap: wrap;
+        a:not(:last-child) {
+          margin-right: 6px;
+        }
+      }
+    }
+  }
+  &_loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 64px 24px;
+  }
+}
