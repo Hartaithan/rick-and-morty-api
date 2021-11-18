@@ -10,7 +10,8 @@
 html,
 body,
 #root,
-.App {
+.App,
+.container {
   height: 100%;
   width: 100%;
 }
@@ -31,4 +32,10 @@ img {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  padding-top: 16px;
 }

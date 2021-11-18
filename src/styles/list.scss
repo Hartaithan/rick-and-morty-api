@@ -3,7 +3,9 @@
     flex-direction: row;
     padding: 1rem;
     &_img {
+      height: 120px;
       min-height: 120px;
+      width: 120px;
       min-width: 120px;
     }
     &_descr {

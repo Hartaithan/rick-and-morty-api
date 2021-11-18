@@ -50,7 +50,12 @@ function App() {
 
   return (
     <div className="App">
-      <Arrows page={page} setPage={setPage} setLoading={setLoading} />
+      <Arrows
+        info={info}
+        page={page}
+        setPage={setPage}
+        setLoading={setLoading}
+      />
       <Container>
         <Filters
           handleSubmit={handleSubmit}
@@ -59,9 +64,11 @@ function App() {
         />
         <Info info={info} page={page} />
         {isLoading ? (
-          <Spinner animation="border" role="status">
-            <span className="visually-hidden">Loading...</span>
-          </Spinner>
+          <div className="loader">
+            <Spinner animation="border" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </Spinner>
+          </div>
         ) : (
           <List characters={characters} modal={modal} setModal={setModal} />
         )}
