@@ -12,8 +12,12 @@
       margin-left: 12px;
       flex-grow: 1;
     }
+    &_name {
+      font-weight: 600;
+    }
     &_status {
       margin-bottom: auto;
+      color: grey;
     }
     &_col {
       &:nth-child(4n) {
