@@ -1,5 +1,5 @@
-@import 'variables';
-@import '~bootstrap/scss/bootstrap';
+@import "variables";
+@import "~bootstrap/scss/bootstrap";
 
 * {
   margin: 0;
@@ -7,9 +7,17 @@
   box-sizing: border-box;
 }
 
-html, body, #root, .App {
+html,
+body,
+#root,
+.App {
   height: 100%;
   width: 100%;
+}
+
+p {
+  text-align: left;
+  margin: 0;
 }
 
 img {
