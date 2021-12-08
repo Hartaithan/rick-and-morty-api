@@ -13,7 +13,7 @@ function Pagination(props: any) {
   return (
     <>
       <BPagination>
-        <BPagination.First onClick={() => changePage(1)} />
+        {page !== 1 && <BPagination.First onClick={() => changePage(1)} />}
         {page > 1 && <BPagination.Prev onClick={() => changePage(page - 1)} />}
         {page > 2 && (
           <BPagination.Item onClick={() => changePage(page - 2)}>
@@ -39,7 +39,9 @@ function Pagination(props: any) {
         {page < info.pages && (
           <BPagination.Next onClick={() => changePage(page + 1)} />
         )}
-        <BPagination.Last onClick={() => changePage(info.pages)} />
+        {page !== info.pages && (
+          <BPagination.Last onClick={() => changePage(info.pages)} />
+        )}
       </BPagination>
     </>
   );
