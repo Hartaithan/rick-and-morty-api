@@ -5,40 +5,43 @@ import { Pagination as BPagination } from "react-bootstrap";
 function Pagination(props: any) {
   const { info, page, setPage, setLoading } = props;
 
-  function changePage(direction: string) {
+  function changePage(page: number) {
     setLoading(true);
-    switch (direction) {
-      case "prev":
-        setPage(page - 1);
-        break;
-      case "next":
-        setPage(page + 1);
-        break;
-      default:
-        return;
-    }
+    setPage(page);
   }
 
   return (
-    <div className="pagination">
+    <>
       <BPagination>
-        <BPagination.First />
-        <BPagination.Prev />
-        <BPagination.Item>{1}</BPagination.Item>
-        <BPagination.Ellipsis />
-
-        <BPagination.Item>{10}</BPagination.Item>
-        <BPagination.Item>{11}</BPagination.Item>
-        <BPagination.Item active>{12}</BPagination.Item>
-        <BPagination.Item>{13}</BPagination.Item>
-        <BPagination.Item disabled>{14}</BPagination.Item>
-
-        <BPagination.Ellipsis />
-        <BPagination.Item>{20}</BPagination.Item>
-        <BPagination.Next />
-        <BPagination.Last />
+        <BPagination.First onClick={() => changePage(1)} />
+        {page > 1 && <BPagination.Prev onClick={() => changePage(page - 1)} />}
+        {page > 2 && (
+          <BPagination.Item onClick={() => changePage(page - 2)}>
+            {page - 2}
+          </BPagination.Item>
+        )}
+        {page > 1 && (
+          <BPagination.Item onClick={() => changePage(page - 1)}>
+            {page - 1}
+          </BPagination.Item>
+        )}
+        <BPagination.Item active>{page}</BPagination.Item>
+        {page < info.pages && (
+          <BPagination.Item onClick={() => changePage(page + 1)}>
+            {page + 1}
+          </BPagination.Item>
+        )}
+        {page < info.pages - 1 && (
+          <BPagination.Item onClick={() => changePage(page + 2)}>
+            {page + 2}
+          </BPagination.Item>
+        )}
+        {page < info.pages && (
+          <BPagination.Next onClick={() => changePage(page + 1)} />
+        )}
+        <BPagination.Last onClick={() => changePage(info.pages)} />
       </BPagination>
-    </div>
+    </>
   );
 }
 

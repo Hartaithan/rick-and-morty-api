@@ -16,14 +16,14 @@ function App() {
   const [modal, setModal] = React.useState({
     id: null,
     isShow: false,
-    isLoading: true
+    isLoading: true,
   });
   const [inputs, setInputs] = React.useState({
     name: "",
     type: "",
     species: "",
     status: "",
-    gender: ""
+    gender: "",
   });
 
   function getCharacters() {
@@ -56,7 +56,6 @@ function App() {
           inputs={inputs}
           setInputs={setInputs}
         />
-        <Info info={info} page={page} />
         {isLoading ? (
           <div className="loader">
             <Spinner animation="border" role="status">
@@ -67,6 +66,7 @@ function App() {
           <List characters={characters} modal={modal} setModal={setModal} />
         )}
         <DetailModal modal={modal} setModal={setModal} />
+        <Info info={info} page={page} />
         <Pagination
           info={info}
           page={page}
