@@ -1,12 +1,11 @@
 .list {
   .card {
     flex-direction: row;
-    padding: 1rem;
+    padding: 12px;
     &_img {
-      height: 120px;
-      min-height: 120px;
-      width: 120px;
-      min-width: 120px;
+      height: 100px;
+      min-height: 100px;
+      min-width: 100px;
     }
     &_descr {
       display: flex;
