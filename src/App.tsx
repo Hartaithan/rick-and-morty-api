@@ -5,7 +5,7 @@ import { Container, Spinner } from "react-bootstrap";
 import Filters from "./components/Filters";
 import List from "./components/List";
 import DetailModal from "./components/DetailModal";
-import Arrows from "./components/Arrows";
+import Pagination from "./components/Pagination";
 import Info from "./components/Info";
 
 function App() {
@@ -16,14 +16,14 @@ function App() {
   const [modal, setModal] = React.useState({
     id: null,
     isShow: false,
-    isLoading: true,
+    isLoading: true
   });
   const [inputs, setInputs] = React.useState({
     name: "",
     type: "",
     species: "",
     status: "",
-    gender: "",
+    gender: ""
   });
 
   function getCharacters() {
@@ -50,12 +50,6 @@ function App() {
 
   return (
     <div className="App">
-      <Arrows
-        info={info}
-        page={page}
-        setPage={setPage}
-        setLoading={setLoading}
-      />
       <Container>
         <Filters
           handleSubmit={handleSubmit}
@@ -73,6 +67,12 @@ function App() {
           <List characters={characters} modal={modal} setModal={setModal} />
         )}
         <DetailModal modal={modal} setModal={setModal} />
+        <Pagination
+          info={info}
+          page={page}
+          setPage={setPage}
+          setLoading={setLoading}
+        />
       </Container>
     </div>
   );
