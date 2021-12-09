@@ -2,38 +2,7 @@ import React from "react";
 import axios from "axios";
 import "../styles/modal.scss";
 import { Modal, Spinner, Accordion } from "react-bootstrap";
-
-type modalTypes = {
-  id: number | null;
-  isShow: boolean;
-  isLoading: boolean;
-};
-
-type detailsReponse = {
-  id: number;
-  name: string;
-  status: string;
-  species: string;
-  type: string;
-  gender: string;
-  origin: {
-    name: string;
-    url: string;
-  };
-  location: {
-    name: string;
-    url: string;
-  };
-  image: string;
-  episode: string[];
-  url: string;
-  created: string;
-};
-
-export interface DetailModalProps {
-  modal: modalTypes;
-  setModal: React.Dispatch<React.SetStateAction<modalTypes>>;
-}
+import { DetailModalProps, detailsReponse } from "../types";
 
 function DetailModal({ modal, setModal }: DetailModalProps) {
   const [details, setDetails] = React.useState<detailsReponse | null>(null);

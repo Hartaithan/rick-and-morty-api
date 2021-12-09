@@ -1,11 +1,12 @@
 import React from "react";
 import "../styles/filters.scss";
 import { Col, Row, Form, Button } from "react-bootstrap";
+import { FilterProps } from "../types";
 
-function Filters(props: any) {
+function Filters(props: FilterProps) {
   const { handleSubmit, inputs, setInputs } = props;
 
-  const handleKeyDown = (event: any) => {
+  const handleKeyDown = (event: React.KeyboardEvent) => {
     if (event.key === "Enter") {
       handleSubmit();
     }
