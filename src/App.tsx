@@ -6,7 +6,6 @@ import Filters from "./components/Filters";
 import List from "./components/List";
 import DetailModal from "./components/DetailModal";
 import Pagination from "./components/Pagination";
-import Info from "./components/Info";
 
 function App() {
   const [characters, setCharacters] = React.useState([]);
@@ -66,7 +65,6 @@ function App() {
           <List characters={characters} modal={modal} setModal={setModal} />
         )}
         <DetailModal modal={modal} setModal={setModal} />
-        <Info info={info} page={page} />
         <Pagination
           info={info}
           page={page}

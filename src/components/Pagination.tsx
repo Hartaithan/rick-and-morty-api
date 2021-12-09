@@ -11,7 +11,8 @@ function Pagination(props: any) {
   }
 
   return (
-    <>
+    <div className="pagination_wrapper">
+      <p className="pagination_page">Page: {page}</p>
       <BPagination>
         {page !== 1 && <BPagination.First onClick={() => changePage(1)} />}
         {page > 1 && <BPagination.Prev onClick={() => changePage(page - 1)} />}
@@ -43,7 +44,8 @@ function Pagination(props: any) {
           <BPagination.Last onClick={() => changePage(info.pages)} />
         )}
       </BPagination>
-    </>
+      <p className="pagination_total">Total items: {info.count}</p>
+    </div>
   );
 }
 
