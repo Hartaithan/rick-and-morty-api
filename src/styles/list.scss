@@ -1,12 +1,15 @@
 .list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   flex-grow: 1;
   .card {
     flex-direction: row;
     padding: 12px;
     &_img {
       height: 100px;
-      min-height: 100px;
-      min-width: 100px;
+      min-height: 110px;
+      min-width: 110px;
     }
     &_descr {
       display: flex;
