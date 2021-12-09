@@ -45,3 +45,9 @@ export interface FilterProps {
   inputs: inputsTypes;
   setInputs: React.Dispatch<React.SetStateAction<inputsTypes>>;
 }
+
+export interface ListProps {
+  characters: detailsReponse[];
+  modal: modalTypes;
+  setModal: React.Dispatch<React.SetStateAction<modalTypes>>;
+}
