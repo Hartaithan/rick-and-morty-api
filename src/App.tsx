@@ -6,11 +6,17 @@ import Filters from "./components/Filters";
 import List from "./components/List";
 import DetailModal from "./components/DetailModal";
 import Pagination from "./components/Pagination";
+import { characterTypes, infoTypes } from "./types";
 
 function App() {
-  const [characters, setCharacters] = React.useState([]);
-  const [isLoading, setLoading] = React.useState(true);
-  const [info, setInfo] = React.useState({});
+  const [characters, setCharacters] = React.useState<characterTypes[]>([]);
+  const [isLoading, setLoading] = React.useState<boolean>(true);
+  const [info, setInfo] = React.useState<infoTypes>({
+    count: null,
+    next: null,
+    pages: null,
+    prev: null,
+  });
   const [page, setPage] = React.useState(1);
   const [modal, setModal] = React.useState({
     id: null,

@@ -1,14 +1,14 @@
 import React from "react";
 import "../styles/list.scss";
 import { Col, Row, Button } from "react-bootstrap";
-import { detailsReponse, ListProps } from "../types";
+import { characterTypes, ListProps } from "../types";
 
 function List(props: ListProps) {
   const { characters, modal, setModal } = props;
   return (
     <div className="list">
       <Row>
-        {characters.map((char: detailsReponse) => {
+        {characters.map((char: characterTypes) => {
           return (
             <Col className="card_col" xs={12} md={6} xl={3} key={char.name}>
               <div className="card">

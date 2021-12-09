@@ -6,7 +6,7 @@ export type modalTypes = {
   isLoading: boolean;
 };
 
-export type detailsReponse = {
+export type characterTypes = {
   id: number;
   name: string;
   status: string;
@@ -35,6 +35,17 @@ export type inputsTypes = {
   gender: string;
 };
 
+export type infoTypes = {
+  count: number | null;
+  next: string | null;
+  pages: number | null;
+  prev: string | null;
+};
+
+export type loadingTypes = boolean;
+
+export type pageTypes = number;
+
 export interface DetailModalProps {
   modal: modalTypes;
   setModal: React.Dispatch<React.SetStateAction<modalTypes>>;
@@ -47,7 +58,14 @@ export interface FilterProps {
 }
 
 export interface ListProps {
-  characters: detailsReponse[];
+  characters: characterTypes[];
   modal: modalTypes;
   setModal: React.Dispatch<React.SetStateAction<modalTypes>>;
+}
+
+export interface PaginationProps {
+  info: infoTypes;
+  page: pageTypes;
+  setPage: React.Dispatch<React.SetStateAction<pageTypes>>;
+  setLoading: React.Dispatch<React.SetStateAction<loadingTypes>>;
 }
