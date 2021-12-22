@@ -10,7 +10,14 @@ function List(props: ListProps) {
       <Row>
         {characters.map((char: characterTypes) => {
           return (
-            <Col className="card_col" xs={12} md={6} xl={3} key={char.name}>
+            <Col
+              className="card_col"
+              xs={12}
+              md={6}
+              lg={4}
+              xl={3}
+              key={char.name}
+            >
               <div className="card">
                 <img className="card_img" src={char.image} alt={char.name} />
                 <div className="card_descr">

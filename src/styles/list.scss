@@ -3,6 +3,7 @@
   justify-content: center;
   align-items: center;
   flex-grow: 1;
+  margin-bottom: 12px;
   .card {
     flex-direction: row;
     padding: 12px;
@@ -48,21 +49,55 @@
 }
 
 @media (max-width: 1400px) {
+  .list {
+    .card {
+      &_name {
+        width: 110px;
+      }
+    }
+  }
 }
 
 @media (max-width: 1600px) {
 }
 
 @media (max-width: 1200px) {
+  .list {
+    .card {
+      &_col {
+        &:nth-child(3n) {
+          margin-bottom: 12px;
+        }
+      }
+    }
+  }
 }
 
 @media (max-width: 992px) {
 }
 
 @media (max-width: 768px) {
+  .list {
+    .card {
+      &_col {
+        &:nth-child(2n) {
+          margin-bottom: 12px;
+        }
+      }
+    }
+  }
 }
 
 @media (max-width: 576px) {
+  .list {
+    .card {
+      &_col {
+        &:not(:last-child) {
+          margin-bottom: 12px;
+        }
+      }
+    }
+  }
 }
 
 @media (max-width: 320px) {
