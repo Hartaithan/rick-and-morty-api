@@ -27,7 +27,7 @@ function Filters(props: FilterProps) {
             onChange={(e) => setInputs({ ...inputs, type: e.target.value })}
           />
         </Form.Group>
-        <Form.Group as={Col} xs={12} md={4} className="mb-2">
+        <Form.Group as={Col} xs={12} md={4}>
           <Form.Control
             placeholder="Enter species..."
             onChange={(e) => setInputs({ ...inputs, species: e.target.value })}
