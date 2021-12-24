@@ -30,6 +30,23 @@
 }
 
 @media (max-width: 576px) {
+  .pagination {
+    order: 3;
+    &_wrapper {
+      flex-wrap: wrap;
+    }
+    &_page {
+      order: 1;
+      margin-right: auto;
+    }
+    &_total {
+      order: 2;
+      justify-content: flex-end;
+    }
+    &_page, &_total {
+      width: 50%;
+    }
+  }
 }
 
 @media (max-width: 320px) {
