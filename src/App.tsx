@@ -12,6 +12,7 @@ import {
   inputsTypes,
   modalTypes,
   pageTypes,
+  paramsType,
 } from "./types";
 
 function App() {
@@ -39,10 +40,27 @@ function App() {
 
   function getCharacters() {
     setLoading(true);
+    const params: paramsType = {};
+    if (page) {
+      params.page = page;
+    }
+    if (inputs.name) {
+      params.name = inputs.name;
+    }
+    if (inputs.type) {
+      params.type = inputs.type;
+    }
+    if (inputs.species) {
+      params.species = inputs.species;
+    }
+    if (inputs.status) {
+      params.status = inputs.status;
+    }
+    if (inputs.gender) {
+      params.gender = inputs.gender;
+    }
     axios
-      .get(
-        `https://rickandmortyapi.com/api/character/?page=${page}&name=${inputs.name}&type=${inputs.type}&species=${inputs.species}&status=${inputs.status}&gender=${inputs.gender}`
-      )
+      .get(`https://rickandmortyapi.com/api/character/`, { params })
       .then(({ data }) => {
         setInfo(data.info);
         setCharacters(data.results);
