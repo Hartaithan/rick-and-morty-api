@@ -1,6 +1,7 @@
 import "./styles/global.scss";
 import React from "react";
 import axios from "axios";
+import { useSearchParams } from "react-router-dom";
 import { Container, Spinner } from "react-bootstrap";
 import Filters from "./components/Filters";
 import List from "./components/List";
@@ -16,6 +17,7 @@ import {
 } from "./types";
 
 function App() {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [characters, setCharacters] = React.useState<characterTypes[]>([]);
   const [isLoading, setLoading] = React.useState<boolean>(true);
   const [info, setInfo] = React.useState<infoTypes>({
@@ -31,12 +33,16 @@ function App() {
     isLoading: true,
   });
   const [inputs, setInputs] = React.useState<inputsTypes>({
-    name: "",
-    type: "",
-    species: "",
-    status: "",
-    gender: "",
+    name: searchParams.get("name") || "",
+    type: searchParams.get("type") || "",
+    species: searchParams.get("species") || "",
+    status: searchParams.get("status") || "",
+    gender: searchParams.get("gender") || "",
   });
+
+  React.useEffect(() => {
+    console.log(searchParams);
+  }, [searchParams]);
 
   function getCharacters() {
     setLoading(true);
@@ -84,6 +90,8 @@ function App() {
           handleSubmit={handleSubmit}
           inputs={inputs}
           setInputs={setInputs}
+          searchParams={searchParams}
+          setSearchParams={setSearchParams}
         />
         {isLoading ? (
           <div className="loader">
