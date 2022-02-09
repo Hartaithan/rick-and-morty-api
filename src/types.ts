@@ -65,7 +65,6 @@ export interface FilterProps {
   handleSubmit: () => void;
   inputs: inputsTypes;
   setInputs: React.Dispatch<React.SetStateAction<inputsTypes>>;
-  searchParams: URLSearchParams;
   setSearchParams: (
     nextInit: URLSearchParamsInit,
     navigateOptions?: { replace?: boolean; state?: any }

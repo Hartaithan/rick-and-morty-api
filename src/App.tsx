@@ -40,10 +40,6 @@ function App() {
     gender: searchParams.get("gender") || "",
   });
 
-  React.useEffect(() => {
-    console.log(searchParams);
-  }, [searchParams]);
-
   function getCharacters() {
     setLoading(true);
     const params: paramsType = {};
@@ -90,7 +86,6 @@ function App() {
           handleSubmit={handleSubmit}
           inputs={inputs}
           setInputs={setInputs}
-          searchParams={searchParams}
           setSearchParams={setSearchParams}
         />
         {isLoading ? (

@@ -4,13 +4,17 @@ import { Col, Row, Form, Button } from "react-bootstrap";
 import { FilterProps } from "../types";
 
 function Filters(props: FilterProps) {
-  const { handleSubmit, inputs, setInputs, searchParams, setSearchParams } =
-    props;
+  const { handleSubmit, inputs, setInputs, setSearchParams } = props;
 
   const handleKeyDown = (event: React.KeyboardEvent) => {
     if (event.key === "Enter") {
       handleSubmit();
     }
+  };
+
+  const handleInputs = (input: string, value: string) => {
+    setInputs({ ...inputs, [input]: value });
+    setSearchParams({ [input]: value });
   };
 
   return (
@@ -19,52 +23,28 @@ function Filters(props: FilterProps) {
         <Form.Group as={Col} xs={12} md={4}>
           <Form.Control
             placeholder="Enter name..."
-            onChange={(e) => {
-              setInputs({ ...inputs, name: e.target.value });
-              setSearchParams({
-                ...searchParams,
-                name: e.target.value || null,
-              });
-            }}
+            onChange={(e) => handleInputs("name", e.target.value)}
             value={inputs.name}
           />
         </Form.Group>
         <Form.Group as={Col} xs={12} md={4}>
           <Form.Control
             placeholder="Enter type..."
-            onChange={(e) => {
-              setInputs({ ...inputs, type: e.target.value });
-              setSearchParams({
-                ...searchParams,
-                type: e.target.value || null,
-              });
-            }}
+            onChange={(e) => handleInputs("type", e.target.value)}
             value={inputs.type}
           />
         </Form.Group>
         <Form.Group as={Col} xs={12} md={4}>
           <Form.Control
             placeholder="Enter species..."
-            onChange={(e) => {
-              setInputs({ ...inputs, species: e.target.value });
-              setSearchParams({
-                ...searchParams,
-                species: e.target.value || null,
-              });
-            }}
+            onChange={(e) => handleInputs("species", e.target.value)}
             value={inputs.species}
           />
         </Form.Group>
         <Form.Group as={Col} xs={12} md={4}>
           <Form.Select
             aria-label="Status select"
-            onChange={(e) => {
-              setInputs({ ...inputs, status: e.target.value });
-              setSearchParams({
-                ...searchParams,
-                status: e.target.value || null,
-              });
-            }}
+            onChange={(e) => handleInputs("status", e.target.value)}
             value={inputs.status.toLocaleLowerCase()}
           >
             <option value="">All statuses</option>
@@ -76,13 +56,7 @@ function Filters(props: FilterProps) {
         <Form.Group as={Col} xs={12} md={4}>
           <Form.Select
             aria-label="Gender select"
-            onChange={(e) => {
-              setInputs({ ...inputs, gender: e.target.value });
-              setSearchParams({
-                ...searchParams,
-                gender: e.target.value || null,
-              });
-            }}
+            onChange={(e) => handleInputs("gender", e.target.value)}
             value={inputs.gender.toLocaleLowerCase()}
           >
             <option value="">All genders</option>
