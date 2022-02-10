@@ -4,7 +4,7 @@ import { Col, Row, Form, Button } from "react-bootstrap";
 import { FilterProps } from "../types";
 
 function Filters(props: FilterProps) {
-  const { handleSubmit, inputs, setInputs, setSearchParams } = props;
+  const { handleSubmit, inputs, setInputs } = props;
 
   const handleKeyDown = (event: React.KeyboardEvent) => {
     if (event.key === "Enter") {
@@ -14,7 +14,6 @@ function Filters(props: FilterProps) {
 
   const handleInputs = (input: string, value: string) => {
     setInputs({ ...inputs, [input]: value });
-    setSearchParams({ [input]: value });
   };
 
   return (

@@ -14,6 +14,7 @@ import {
   modalTypes,
   pageTypes,
   paramsType,
+  queriesType,
 } from "./types";
 
 function App() {
@@ -73,6 +74,29 @@ function App() {
   React.useEffect(() => {
     getCharacters();
   }, [page]); // eslint-disable-line
+
+  React.useEffect(() => {
+    const queries: queriesType = {};
+    if (page) {
+      queries.page = page.toString();
+    }
+    if (inputs.name) {
+      queries.name = inputs.name;
+    }
+    if (inputs.type) {
+      queries.type = inputs.type;
+    }
+    if (inputs.species) {
+      queries.species = inputs.species;
+    }
+    if (inputs.status) {
+      queries.status = inputs.status;
+    }
+    if (inputs.gender) {
+      queries.gender = inputs.gender;
+    }
+    setSearchParams(queries);
+  }, [inputs, page]); // eslint-disable-line
 
   function handleSubmit() {
     setPage(1);

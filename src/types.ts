@@ -56,6 +56,15 @@ export type paramsType = {
   gender?: string | null;
 };
 
+export type queriesType = {
+  page?: string | null;
+  name?: string | null;
+  type?: string | null;
+  species?: string | null;
+  status?: string | null;
+  gender?: string | null;
+};
+
 export interface DetailModalProps {
   modal: modalTypes;
   setModal: React.Dispatch<React.SetStateAction<modalTypes>>;
