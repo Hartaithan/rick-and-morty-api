@@ -110,7 +110,6 @@ function App() {
           handleSubmit={handleSubmit}
           inputs={inputs}
           setInputs={setInputs}
-          setSearchParams={setSearchParams}
         />
         {isLoading ? (
           <div className="loader">

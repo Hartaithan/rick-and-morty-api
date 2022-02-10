@@ -1,5 +1,4 @@
 import React from "react";
-import { URLSearchParamsInit } from "react-router-dom";
 
 export type modalTypes = {
   id: number | null;
@@ -74,10 +73,6 @@ export interface FilterProps {
   handleSubmit: () => void;
   inputs: inputsTypes;
   setInputs: React.Dispatch<React.SetStateAction<inputsTypes>>;
-  setSearchParams: (
-    nextInit: URLSearchParamsInit,
-    navigateOptions?: { replace?: boolean; state?: any }
-  ) => void;
 }
 
 export interface ListProps {
