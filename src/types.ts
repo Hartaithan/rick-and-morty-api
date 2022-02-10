@@ -47,15 +47,6 @@ export type loadingTypes = boolean;
 export type pageTypes = number;
 
 export type paramsType = {
-  page?: number | null;
-  name?: string | null;
-  type?: string | null;
-  species?: string | null;
-  status?: string | null;
-  gender?: string | null;
-};
-
-export type queriesType = {
   page?: string | null;
   name?: string | null;
   type?: string | null;

@@ -14,7 +14,6 @@ import {
   modalTypes,
   pageTypes,
   paramsType,
-  queriesType,
 } from "./types";
 
 function App() {
@@ -41,27 +40,32 @@ function App() {
     gender: searchParams.get("gender") || "",
   });
 
-  function getCharacters() {
-    setLoading(true);
-    const params: paramsType = {};
+  function generateParams() {
+    const object: paramsType = {};
     if (page) {
-      params.page = page;
+      object.page = page.toString();
     }
     if (inputs.name) {
-      params.name = inputs.name;
+      object.name = inputs.name;
     }
     if (inputs.type) {
-      params.type = inputs.type;
+      object.type = inputs.type;
     }
     if (inputs.species) {
-      params.species = inputs.species;
+      object.species = inputs.species;
     }
     if (inputs.status) {
-      params.status = inputs.status;
+      object.status = inputs.status;
     }
     if (inputs.gender) {
-      params.gender = inputs.gender;
+      object.gender = inputs.gender;
     }
+    return object;
+  }
+
+  function getCharacters() {
+    setLoading(true);
+    const params = generateParams();
     axios
       .get(`https://rickandmortyapi.com/api/character/`, { params })
       .then(({ data }) => {
@@ -76,25 +80,7 @@ function App() {
   }, [page]); // eslint-disable-line
 
   React.useEffect(() => {
-    const queries: queriesType = {};
-    if (page) {
-      queries.page = page.toString();
-    }
-    if (inputs.name) {
-      queries.name = inputs.name;
-    }
-    if (inputs.type) {
-      queries.type = inputs.type;
-    }
-    if (inputs.species) {
-      queries.species = inputs.species;
-    }
-    if (inputs.status) {
-      queries.status = inputs.status;
-    }
-    if (inputs.gender) {
-      queries.gender = inputs.gender;
-    }
+    const queries = generateParams();
     setSearchParams(queries);
   }, [inputs, page]); // eslint-disable-line
 
