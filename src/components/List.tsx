@@ -16,7 +16,7 @@ function List(props: ListProps) {
               md={6}
               lg={4}
               xl={3}
-              key={char.name}
+              key={`${char.id}-${char.name}`}
             >
               <div className="card">
                 <img className="card_img" src={char.image} alt={char.name} />
