@@ -79,13 +79,10 @@ function App() {
     getCharacters();
   }, [page]); // eslint-disable-line
 
-  React.useEffect(() => {
-    const queries = generateParams();
-    setSearchParams(queries);
-  }, [inputs, page]); // eslint-disable-line
-
   function handleSubmit() {
     setPage(1);
+    const queries = generateParams();
+    setSearchParams(queries);
     getCharacters();
   }
 
