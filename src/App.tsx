@@ -72,6 +72,14 @@ function App() {
         setInfo(data.info);
         setCharacters(data.results);
         setLoading(false);
+      })
+      .catch(({ response }) => {
+        if (response.data.error === "There is nothing here") {
+          setInfo(null);
+          setCharacters([]);
+        }
+        setLoading(false);
+        console.error(response.data || response);
       });
   }
 
