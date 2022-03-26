@@ -1,34 +1,34 @@
 import React from "react";
 import "./detailModal.scss";
 import { Modal, Accordion } from "react-bootstrap";
-import { IDetailModalProps } from "../../models/DetailModalModel";
 import { ICharacter } from "../../models/CharacterModel";
 import Loader from "../Loader/Loader";
 import API from "../../api";
+import modals, { ModalTypes } from "../../store/modals";
+import { observer } from "mobx-react-lite";
 
-const DetailModal: React.FC<IDetailModalProps> = (props) => {
-  const { modal, setModal } = props;
+const DetailModal: React.FC = () => {
+  const [isLoading, setLoading] = React.useState(true);
   const [details, setDetails] = React.useState<ICharacter | null>(null);
 
   React.useEffect(() => {
-    if (modal.isShow) {
-      API.get(`/character/${modal.id}`).then(({ data }) => {
+    if (modals.detail) {
+      API.get(`/character/${modals.id}`).then(({ data }) => {
         setDetails(data);
-        setModal({ ...modal, isLoading: false });
+        setLoading(false);
       });
     }
-  }, [modal.isShow]); // eslint-disable-line
+  }, [modals.detail]); // eslint-disable-line
 
   return (
     <Modal
       className="detail-modal"
-      show={modal.isShow}
-      onHide={() =>
-        setModal({ ...modal, id: null, isShow: false, isLoading: true })
-      }
+      show={modals.detail}
+      onHide={() => modals.close(ModalTypes.Detail)}
+      onExited={() => setLoading(true)}
       centered
     >
-      {modal.isLoading ? (
+      {isLoading ? (
         <Loader />
       ) : (
         <>
@@ -96,4 +96,4 @@ const DetailModal: React.FC<IDetailModalProps> = (props) => {
   );
 };
 
-export default DetailModal;
+export default observer(DetailModal);

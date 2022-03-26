@@ -8,15 +8,14 @@ import DetailModal from "./components/DetailModal/DetailModal";
 import Pagination from "./components/Pagination/Pagination";
 import { IInfoState } from "./models/InfoModel";
 import { IInputsState } from "./models/InputsModel";
-import { ICharacter } from "./models/CharacterModel";
 import { ParamsType } from "./models/ParamsModel";
-import { IModalState } from "./models/DetailModalModel";
 import Loader from "./components/Loader/Loader";
 import API from "./api";
+import characters from "./store/characters";
+import { observer } from "mobx-react-lite";
 
 const App = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [characters, setCharacters] = React.useState<ICharacter[]>([]);
   const [isLoading, setLoading] = React.useState<boolean>(true);
   const [info, setInfo] = React.useState<IInfoState>({
     count: null,
@@ -25,11 +24,6 @@ const App = () => {
     prev: null,
   });
   const [page, setPage] = React.useState<number>(1);
-  const [modal, setModal] = React.useState<IModalState>({
-    id: null,
-    isShow: false,
-    isLoading: true,
-  });
   const [inputs, setInputs] = React.useState<IInputsState>({
     name: searchParams.get("name") || "",
     type: searchParams.get("type") || "",
@@ -67,13 +61,13 @@ const App = () => {
     API.get("/character", { params })
       .then(({ data }) => {
         setInfo(data.info);
-        setCharacters(data.results);
+        characters.set(data.results);
         setLoading(false);
       })
       .catch(({ response }) => {
         if (response.data.error === "There is nothing here") {
           setInfo(null);
-          setCharacters([]);
+          characters.clear();
         }
         setLoading(false);
         console.error(response.data || response);
@@ -98,12 +92,8 @@ const App = () => {
         inputs={inputs}
         setInputs={setInputs}
       />
-      {isLoading ? (
-        <Loader />
-      ) : (
-        <List characters={characters} modal={modal} setModal={setModal} />
-      )}
-      <DetailModal modal={modal} setModal={setModal} />
+      {isLoading ? <Loader /> : <List />}
+      <DetailModal />
       <Pagination
         info={info}
         page={page}
@@ -114,4 +104,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default observer(App);

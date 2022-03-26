@@ -1,21 +1,21 @@
 import React from "react";
 import "./list.scss";
 import { Col, Row, Button } from "react-bootstrap";
-import { IListProps } from "../../models/ListModel";
 import { ICharacter } from "../../models/CharacterModel";
+import characters from "../../store/characters";
+import { observer } from "mobx-react-lite";
+import modals, { ModalTypes } from "../../store/modals";
 
-const List: React.FC<IListProps> = (props) => {
-  const { characters, modal, setModal } = props;
-
+const List: React.FC = () => {
   return (
     <div className="list">
-      {characters.length === 0 ? (
+      {characters.list.length === 0 ? (
         <Row>
           <Col>There is nothing here</Col>
         </Row>
       ) : (
         <Row>
-          {characters.map((char: ICharacter) => {
+          {characters.list.map((char: ICharacter) => {
             return (
               <Col
                 className="card__col"
@@ -31,9 +31,7 @@ const List: React.FC<IListProps> = (props) => {
                     <p className="card__name">{char.name}</p>
                     <p className="card__status">{char.status}</p>
                     <Button
-                      onClick={() =>
-                        setModal({ ...modal, isShow: true, id: char.id })
-                      }
+                      onClick={() => modals.open(ModalTypes.Detail, char.id)}
                     >
                       Details
                     </Button>
@@ -48,4 +46,4 @@ const List: React.FC<IListProps> = (props) => {
   );
 };
 
-export default List;
+export default observer(List);
