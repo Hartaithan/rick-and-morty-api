@@ -12,10 +12,10 @@ const Pagination: React.FC<IPaginationProps> = (props) => {
   };
 
   return (
-    <div className="pagination_wrapper">
+    <div className="pagination__wrapper">
       {info && (
         <>
-          <p className="pagination_page">Page: {page}</p>
+          <p className="pagination__page">Page: {page}</p>
           <BPagination>
             {page !== 1 && <BPagination.First onClick={() => changePage(1)} />}
             {page > 1 && (
@@ -49,7 +49,7 @@ const Pagination: React.FC<IPaginationProps> = (props) => {
               <BPagination.Last onClick={() => changePage(info.pages)} />
             )}
           </BPagination>
-          <p className="pagination_total">Total items: {info.count}</p>
+          <p className="pagination__total">Total items: {info.count}</p>
         </>
       )}
     </div>

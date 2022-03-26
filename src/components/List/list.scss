@@ -6,30 +6,30 @@
   .card {
     flex-direction: row;
     padding: 12px;
-    &_img {
+    &__img {
       height: 100px;
       min-height: 110px;
       min-width: 110px;
     }
-    &_descr {
+    &__descr {
       display: flex;
       width: fit-content;
       flex-direction: column;
       margin-left: 12px;
       flex-grow: 1;
     }
-    &_name {
+    &__name {
       width: 140px;
       font-weight: 600;
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
     }
-    &_status {
+    &__status {
       margin-bottom: auto;
       color: grey;
     }
-    &_col {
+    &__col {
       &:nth-child(4n) {
         margin-bottom: 12px;
       }
@@ -50,7 +50,7 @@
 @media (max-width: 1400px) {
   .list {
     .card {
-      &_name {
+      &__name {
         width: 110px;
       }
     }
@@ -63,7 +63,7 @@
 @media (max-width: 1200px) {
   .list {
     .card {
-      &_col {
+      &__col {
         &:nth-child(3n) {
           margin-bottom: 12px;
         }
@@ -78,7 +78,7 @@
 @media (max-width: 768px) {
   .list {
     .card {
-      &_col {
+      &__col {
         &:nth-child(2n) {
           margin-bottom: 12px;
         }
@@ -90,7 +90,7 @@
 @media (max-width: 576px) {
   .list {
     .card {
-      &_col {
+      &__col {
         &:not(:last-child) {
           margin-bottom: 12px;
         }

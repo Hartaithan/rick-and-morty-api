@@ -21,7 +21,7 @@ const DetailModal: React.FC<IDetailModalProps> = (props) => {
 
   return (
     <Modal
-      className="detailModal"
+      className="detail-modal"
       show={modal.isShow}
       onHide={() =>
         setModal({ ...modal, id: null, isShow: false, isLoading: true })
@@ -35,7 +35,7 @@ const DetailModal: React.FC<IDetailModalProps> = (props) => {
           <Modal.Header closeButton>
             <Modal.Title>
               <img
-                className="card_img"
+                className="detail-modal__avatar"
                 src={details?.image}
                 alt={details?.name || "character image"}
               />
@@ -43,21 +43,23 @@ const DetailModal: React.FC<IDetailModalProps> = (props) => {
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <div className="detailModal_item">
-              <div className="detailModal_item_title">Gender:</div>
-              <div className="detailModal_item_value">{details?.gender}</div>
+            <div className="detail-modal__item">
+              <div className="detail-modal__item__title">Gender:</div>
+              <div className="detail-modal__item__value">{details?.gender}</div>
             </div>
-            <div className="detailModal_item">
-              <div className="detailModal_item_title">Status:</div>
-              <div className="detailModal_item_value">{details?.status}</div>
+            <div className="detail-modal__item">
+              <div className="detail-modal__item__title">Status:</div>
+              <div className="detail-modal__item__value">{details?.status}</div>
             </div>
-            <div className="detailModal_item">
-              <div className="detailModal_item_title">Species:</div>
-              <div className="detailModal_item_value">{details?.species}</div>
+            <div className="detail-modal__item">
+              <div className="detail-modal__item__title">Species:</div>
+              <div className="detail-modal__item__value">
+                {details?.species}
+              </div>
             </div>
-            <div className="detailModal_item">
-              <div className="detailModal_item_title">Origin:</div>
-              <div className="detailModal_item_value">
+            <div className="detail-modal__item">
+              <div className="detail-modal__item__title">Origin:</div>
+              <div className="detail-modal__item__value">
                 {details?.origin.name === "unknown" ? (
                   <p>{details?.origin.name}</p>
                 ) : (
@@ -65,9 +67,9 @@ const DetailModal: React.FC<IDetailModalProps> = (props) => {
                 )}
               </div>
             </div>
-            <div className="detailModal_item">
-              <div className="detailModal_item_title">Location:</div>
-              <div className="detailModal_item_value">
+            <div className="detail-modal__item">
+              <div className="detail-modal__item__title">Location:</div>
+              <div className="detail-modal__item__value">
                 {details?.location.name === "unknown" ? (
                   <p>{details?.location.name}</p>
                 ) : (
@@ -79,7 +81,7 @@ const DetailModal: React.FC<IDetailModalProps> = (props) => {
               <Accordion.Item eventKey="0">
                 <Accordion.Header>{`Episodes (${details?.episode.length})`}</Accordion.Header>
                 <Accordion.Body>
-                  <div className="detailModal_item_value episodes">
+                  <div className="detail-modal__item__value episodes">
                     {details?.episode.map((ep: string) => {
                       return <a href={ep}>{ep.split("episode/")[1]}</a>;
                     })}

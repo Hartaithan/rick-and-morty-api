@@ -1,4 +1,4 @@
-.detailModal {
+.detail-modal {
   .modal {
     &-title {
       display: flex;
@@ -18,13 +18,17 @@
   .accordion {
     margin-top: 12px;
   }
-  &_item {
+  &__avatar {
+    height: 50px;
+    width: 50px;
+  }
+  &__item {
     display: flex;
-    &_title {
+    &__title {
       font-weight: 600;
       min-width: 100px;
     }
-    &_value {
+    &__value {
       display: flex;
       flex-wrap: wrap;
       &.episodes {

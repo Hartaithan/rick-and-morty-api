@@ -1,7 +1,7 @@
 .pagination {
   justify-content: center;
   flex-grow: 1;
-  &_wrapper {
+  &__wrapper {
     display: flex;
     p {
       display: flex;
@@ -32,18 +32,18 @@
 @media (max-width: 576px) {
   .pagination {
     order: 3;
-    &_wrapper {
+    &__wrapper {
       flex-wrap: wrap;
     }
-    &_page {
+    &__page {
       order: 1;
       margin-right: auto;
     }
-    &_total {
+    &__total {
       order: 2;
       justify-content: flex-end;
     }
-    &_page, &_total {
+    &__page, &__total {
       width: 50%;
     }
   }
