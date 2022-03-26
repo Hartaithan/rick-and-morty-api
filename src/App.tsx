@@ -7,32 +7,29 @@ import Filters from "./components/Filters";
 import List from "./components/List";
 import DetailModal from "./components/DetailModal";
 import Pagination from "./components/Pagination";
-import {
-  characterTypes,
-  infoTypes,
-  inputsTypes,
-  modalTypes,
-  pageTypes,
-  paramsType,
-} from "./types";
+import { IInfoState } from "./models/InfoModel";
+import { IInputsState } from "./models/InputsModel";
+import { ICharacter } from "./models/CharacterModel";
+import { ParamsType } from "./models/ParamsModel";
+import { IModalState } from "./models/DetailModalModel";
 
 function App() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [characters, setCharacters] = React.useState<characterTypes[]>([]);
+  const [characters, setCharacters] = React.useState<ICharacter[]>([]);
   const [isLoading, setLoading] = React.useState<boolean>(true);
-  const [info, setInfo] = React.useState<infoTypes>({
+  const [info, setInfo] = React.useState<IInfoState>({
     count: null,
     next: null,
     pages: null,
     prev: null,
   });
-  const [page, setPage] = React.useState<pageTypes>(1);
-  const [modal, setModal] = React.useState<modalTypes>({
+  const [page, setPage] = React.useState<number>(1);
+  const [modal, setModal] = React.useState<IModalState>({
     id: null,
     isShow: false,
     isLoading: true,
   });
-  const [inputs, setInputs] = React.useState<inputsTypes>({
+  const [inputs, setInputs] = React.useState<IInputsState>({
     name: searchParams.get("name") || "",
     type: searchParams.get("type") || "",
     species: searchParams.get("species") || "",
@@ -41,7 +38,7 @@ function App() {
   });
 
   function generateParams() {
-    const object: paramsType = {};
+    const object: ParamsType = {};
     if (page) {
       object.page = page.toString();
     }

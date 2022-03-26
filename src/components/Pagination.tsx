@@ -1,9 +1,9 @@
 import React from "react";
 import "../styles/pagination.scss";
 import { Pagination as BPagination } from "react-bootstrap";
-import { PaginationProps } from "../types";
+import { IPaginationProps } from "../models/PaginationModel";
 
-function Pagination(props: PaginationProps) {
+function Pagination(props: IPaginationProps) {
   const { info, page, setPage, setLoading } = props;
 
   function changePage(page: number) {

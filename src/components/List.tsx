@@ -1,9 +1,10 @@
 import React from "react";
 import "../styles/list.scss";
 import { Col, Row, Button } from "react-bootstrap";
-import { characterTypes, ListProps } from "../types";
+import { IListProps } from "../models/ListModel";
+import { ICharacter } from "../models/CharacterModel";
 
-function List(props: ListProps) {
+function List(props: IListProps) {
   const { characters, modal, setModal } = props;
   return (
     <div className="list">
@@ -13,7 +14,7 @@ function List(props: ListProps) {
         </Row>
       ) : (
         <Row>
-          {characters.map((char: characterTypes) => {
+          {characters.map((char: ICharacter) => {
             return (
               <Col
                 className="card_col"

@@ -1,9 +1,9 @@
 import React from "react";
 import "../styles/filters.scss";
 import { Col, Row, Form, Button } from "react-bootstrap";
-import { FilterProps } from "../types";
+import { IFilterProps } from "../models/FilterModel";
 
-function Filters(props: FilterProps) {
+function Filters(props: IFilterProps) {
   const { handleSubmit, inputs, setInputs } = props;
 
   const handleKeyDown = (event: React.KeyboardEvent) => {

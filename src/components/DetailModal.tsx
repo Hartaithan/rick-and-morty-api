@@ -2,10 +2,11 @@ import React from "react";
 import axios from "axios";
 import "../styles/modal.scss";
 import { Modal, Spinner, Accordion } from "react-bootstrap";
-import { DetailModalProps, characterTypes } from "../types";
+import { IDetailModalProps } from "../models/DetailModalModel";
+import { ICharacter } from "../models/CharacterModel";
 
-function DetailModal({ modal, setModal }: DetailModalProps) {
-  const [details, setDetails] = React.useState<characterTypes | null>(null);
+function DetailModal({ modal, setModal }: IDetailModalProps) {
+  const [details, setDetails] = React.useState<ICharacter | null>(null);
 
   React.useEffect(() => {
     if (modal.isShow) {
