@@ -1,7 +1,7 @@
 import React from "react";
-import "../styles/filters.scss";
+import "./filters.scss";
 import { Col, Row, Form, Button } from "react-bootstrap";
-import { IFilterProps } from "../models/FilterModel";
+import { IFilterProps } from "../../models/FilterModel";
 
 const Filters: React.FC<IFilterProps> = (props) => {
   const { handleSubmit, inputs, setInputs } = props;

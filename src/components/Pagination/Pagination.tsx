@@ -1,7 +1,7 @@
 import React from "react";
-import "../styles/pagination.scss";
+import "./pagination.scss";
 import { Pagination as BPagination } from "react-bootstrap";
-import { IPaginationProps } from "../models/PaginationModel";
+import { IPaginationProps } from "../../models/PaginationModel";
 
 const Pagination: React.FC<IPaginationProps> = (props) => {
   const { info, page, setPage, setLoading } = props;

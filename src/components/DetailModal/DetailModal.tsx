@@ -1,9 +1,10 @@
 import React from "react";
 import axios from "axios";
-import "../styles/modal.scss";
-import { Modal, Spinner, Accordion } from "react-bootstrap";
-import { IDetailModalProps } from "../models/DetailModalModel";
-import { ICharacter } from "../models/CharacterModel";
+import "./detailModal.scss";
+import { Modal, Accordion } from "react-bootstrap";
+import { IDetailModalProps } from "../../models/DetailModalModel";
+import { ICharacter } from "../../models/CharacterModel";
+import Loader from "../Loader/Loader";
 
 const DetailModal: React.FC<IDetailModalProps> = (props) => {
   const { modal, setModal } = props;
@@ -30,11 +31,7 @@ const DetailModal: React.FC<IDetailModalProps> = (props) => {
       centered
     >
       {modal.isLoading ? (
-        <div className="detailModal_loader">
-          <Spinner animation="border" role="status">
-            <span className="visually-hidden">Loading...</span>
-          </Spinner>
-        </div>
+        <Loader />
       ) : (
         <>
           <Modal.Header closeButton>

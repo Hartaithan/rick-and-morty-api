@@ -1,17 +1,18 @@
-import "./styles/global.scss";
+import "./global.scss";
 import React from "react";
 import axios from "axios";
 import { useSearchParams } from "react-router-dom";
-import { Container, Spinner } from "react-bootstrap";
-import Filters from "./components/Filters";
-import List from "./components/List";
-import DetailModal from "./components/DetailModal";
-import Pagination from "./components/Pagination";
+import { Container } from "react-bootstrap";
+import Filters from "./components/Filters/Filters";
+import List from "./components/List/List";
+import DetailModal from "./components/DetailModal/DetailModal";
+import Pagination from "./components/Pagination/Pagination";
 import { IInfoState } from "./models/InfoModel";
 import { IInputsState } from "./models/InputsModel";
 import { ICharacter } from "./models/CharacterModel";
 import { ParamsType } from "./models/ParamsModel";
 import { IModalState } from "./models/DetailModalModel";
+import Loader from "./components/Loader/Loader";
 
 const App = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -100,11 +101,7 @@ const App = () => {
           setInputs={setInputs}
         />
         {isLoading ? (
-          <div className="loader">
-            <Spinner animation="border" role="status">
-              <span className="visually-hidden">Loading...</span>
-            </Spinner>
-          </div>
+          <Loader />
         ) : (
           <List characters={characters} modal={modal} setModal={setModal} />
         )}

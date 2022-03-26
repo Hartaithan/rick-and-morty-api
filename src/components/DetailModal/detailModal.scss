@@ -1,0 +1,62 @@
+.detailModal {
+  .modal {
+    &-title {
+      display: flex;
+      img {
+        height: 50px;
+        width: 50px;
+      }
+      p {
+        margin: auto 0;
+        margin-left: 12px;
+      }
+    }
+    &-content {
+      min-height: 200px;
+    }
+  }
+  .accordion {
+    margin-top: 12px;
+  }
+  &_item {
+    display: flex;
+    &_title {
+      font-weight: 600;
+      min-width: 100px;
+    }
+    &_value {
+      display: flex;
+      flex-wrap: wrap;
+      &.episodes {
+        flex-wrap: wrap;
+        a:not(:last-child) {
+          margin-right: 6px;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1921px) {
+}
+
+@media (max-width: 1400px) {
+}
+
+@media (max-width: 1600px) {
+}
+
+@media (max-width: 1200px) {
+}
+
+@media (max-width: 992px) {
+}
+
+@media (max-width: 768px) {
+}
+
+@media (max-width: 576px) {
+}
+
+@media (max-width: 320px) {
+}

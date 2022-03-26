@@ -1,8 +1,8 @@
 import React from "react";
-import "../styles/list.scss";
+import "./list.scss";
 import { Col, Row, Button } from "react-bootstrap";
-import { IListProps } from "../models/ListModel";
-import { ICharacter } from "../models/CharacterModel";
+import { IListProps } from "../../models/ListModel";
+import { ICharacter } from "../../models/CharacterModel";
 
 const List: React.FC<IListProps> = (props) => {
   const { characters, modal, setModal } = props;
