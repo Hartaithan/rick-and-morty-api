@@ -10,7 +10,6 @@
 html,
 body,
 #root,
-.App,
 .container {
   height: 100%;
   width: 100%;
@@ -23,15 +22,6 @@ p {
 
 img {
   border-radius: 0.25rem;
-}
-
-.App {
-  font-family: sans-serif;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }
 
 .container {

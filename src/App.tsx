@@ -1,6 +1,5 @@
 import "./global.scss";
 import React from "react";
-import axios from "axios";
 import { useSearchParams } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import Filters from "./components/Filters/Filters";
@@ -13,6 +12,7 @@ import { ICharacter } from "./models/CharacterModel";
 import { ParamsType } from "./models/ParamsModel";
 import { IModalState } from "./models/DetailModalModel";
 import Loader from "./components/Loader/Loader";
+import API from "./api";
 
 const App = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -64,8 +64,7 @@ const App = () => {
   const getCharacters = () => {
     setLoading(true);
     const params = generateParams();
-    axios
-      .get(`https://rickandmortyapi.com/api/character/`, { params })
+    API.get("/character", { params })
       .then(({ data }) => {
         setInfo(data.info);
         setCharacters(data.results);
@@ -93,27 +92,25 @@ const App = () => {
   }, [page]); // eslint-disable-line
 
   return (
-    <div className="App">
-      <Container>
-        <Filters
-          handleSubmit={handleSubmit}
-          inputs={inputs}
-          setInputs={setInputs}
-        />
-        {isLoading ? (
-          <Loader />
-        ) : (
-          <List characters={characters} modal={modal} setModal={setModal} />
-        )}
-        <DetailModal modal={modal} setModal={setModal} />
-        <Pagination
-          info={info}
-          page={page}
-          setPage={setPage}
-          setLoading={setLoading}
-        />
-      </Container>
-    </div>
+    <Container>
+      <Filters
+        handleSubmit={handleSubmit}
+        inputs={inputs}
+        setInputs={setInputs}
+      />
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <List characters={characters} modal={modal} setModal={setModal} />
+      )}
+      <DetailModal modal={modal} setModal={setModal} />
+      <Pagination
+        info={info}
+        page={page}
+        setPage={setPage}
+        setLoading={setLoading}
+      />
+    </Container>
   );
 };
 

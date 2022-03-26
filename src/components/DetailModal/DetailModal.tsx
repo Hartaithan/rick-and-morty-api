@@ -1,10 +1,10 @@
 import React from "react";
-import axios from "axios";
 import "./detailModal.scss";
 import { Modal, Accordion } from "react-bootstrap";
 import { IDetailModalProps } from "../../models/DetailModalModel";
 import { ICharacter } from "../../models/CharacterModel";
 import Loader from "../Loader/Loader";
+import API from "../../api";
 
 const DetailModal: React.FC<IDetailModalProps> = (props) => {
   const { modal, setModal } = props;
@@ -12,12 +12,10 @@ const DetailModal: React.FC<IDetailModalProps> = (props) => {
 
   React.useEffect(() => {
     if (modal.isShow) {
-      axios
-        .get(`https://rickandmortyapi.com/api/character/${modal.id}`)
-        .then(({ data }) => {
-          setDetails(data);
-          setModal({ ...modal, isLoading: false });
-        });
+      API.get(`/character/${modal.id}`).then(({ data }) => {
+        setDetails(data);
+        setModal({ ...modal, isLoading: false });
+      });
     }
   }, [modal.isShow]); // eslint-disable-line
 
