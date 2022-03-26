@@ -5,7 +5,8 @@ import { Modal, Spinner, Accordion } from "react-bootstrap";
 import { IDetailModalProps } from "../models/DetailModalModel";
 import { ICharacter } from "../models/CharacterModel";
 
-function DetailModal({ modal, setModal }: IDetailModalProps) {
+const DetailModal: React.FC<IDetailModalProps> = (props) => {
+  const { modal, setModal } = props;
   const [details, setDetails] = React.useState<ICharacter | null>(null);
 
   React.useEffect(() => {
@@ -96,6 +97,6 @@ function DetailModal({ modal, setModal }: IDetailModalProps) {
       )}
     </Modal>
   );
-}
+};
 
 export default DetailModal;

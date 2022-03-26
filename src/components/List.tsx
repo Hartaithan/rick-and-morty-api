@@ -4,8 +4,9 @@ import { Col, Row, Button } from "react-bootstrap";
 import { IListProps } from "../models/ListModel";
 import { ICharacter } from "../models/CharacterModel";
 
-function List(props: IListProps) {
+const List: React.FC<IListProps> = (props) => {
   const { characters, modal, setModal } = props;
+
   return (
     <div className="list">
       {characters.length === 0 ? (
@@ -45,6 +46,6 @@ function List(props: IListProps) {
       )}
     </div>
   );
-}
+};
 
 export default List;

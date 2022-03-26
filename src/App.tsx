@@ -13,7 +13,7 @@ import { ICharacter } from "./models/CharacterModel";
 import { ParamsType } from "./models/ParamsModel";
 import { IModalState } from "./models/DetailModalModel";
 
-function App() {
+const App = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [characters, setCharacters] = React.useState<ICharacter[]>([]);
   const [isLoading, setLoading] = React.useState<boolean>(true);
@@ -37,7 +37,7 @@ function App() {
     gender: searchParams.get("gender") || "",
   });
 
-  function generateParams() {
+  const generateParams = () => {
     const object: ParamsType = {};
     if (page) {
       object.page = page.toString();
@@ -58,9 +58,9 @@ function App() {
       object.gender = inputs.gender;
     }
     return object;
-  }
+  };
 
-  function getCharacters() {
+  const getCharacters = () => {
     setLoading(true);
     const params = generateParams();
     axios
@@ -78,18 +78,18 @@ function App() {
         setLoading(false);
         console.error(response.data || response);
       });
-  }
+  };
 
-  React.useEffect(() => {
-    getCharacters();
-  }, [page]); // eslint-disable-line
-
-  function handleSubmit() {
+  const handleSubmit = () => {
     setPage(1);
     const queries = generateParams();
     setSearchParams(queries);
     getCharacters();
-  }
+  };
+
+  React.useEffect(() => {
+    getCharacters();
+  }, [page]); // eslint-disable-line
 
   return (
     <div className="App">
@@ -118,6 +118,6 @@ function App() {
       </Container>
     </div>
   );
-}
+};
 
 export default App;

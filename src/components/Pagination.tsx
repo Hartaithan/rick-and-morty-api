@@ -3,13 +3,13 @@ import "../styles/pagination.scss";
 import { Pagination as BPagination } from "react-bootstrap";
 import { IPaginationProps } from "../models/PaginationModel";
 
-function Pagination(props: IPaginationProps) {
+const Pagination: React.FC<IPaginationProps> = (props) => {
   const { info, page, setPage, setLoading } = props;
 
-  function changePage(page: number) {
+  const changePage = (page: number) => {
     setLoading(true);
     setPage(page);
-  }
+  };
 
   return (
     <div className="pagination_wrapper">
@@ -54,6 +54,6 @@ function Pagination(props: IPaginationProps) {
       )}
     </div>
   );
-}
+};
 
 export default Pagination;

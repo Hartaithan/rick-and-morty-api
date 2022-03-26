@@ -3,7 +3,7 @@ import "../styles/filters.scss";
 import { Col, Row, Form, Button } from "react-bootstrap";
 import { IFilterProps } from "../models/FilterModel";
 
-function Filters(props: IFilterProps) {
+const Filters: React.FC<IFilterProps> = (props) => {
   const { handleSubmit, inputs, setInputs } = props;
 
   const handleKeyDown = (event: React.KeyboardEvent) => {
@@ -73,6 +73,6 @@ function Filters(props: IFilterProps) {
       </Form>
     </div>
   );
-}
+};
 
 export default Filters;
