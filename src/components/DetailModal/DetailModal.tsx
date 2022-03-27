@@ -36,54 +36,56 @@ const DetailModal: React.FC = () => {
             <Modal.Title>
               <img
                 className="detail-modal__avatar"
-                src={details?.image}
-                alt={details?.name || "character image"}
+                src={details.image}
+                alt={details.name || "character image"}
               />
-              <p>{details?.name}</p>
+              <p>{details.name}</p>
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <div className="detail-modal__item">
               <div className="detail-modal__item__title">Gender:</div>
-              <div className="detail-modal__item__value">{details?.gender}</div>
+              <div className="detail-modal__item__value">{details.gender}</div>
             </div>
             <div className="detail-modal__item">
               <div className="detail-modal__item__title">Status:</div>
-              <div className="detail-modal__item__value">{details?.status}</div>
+              <div className="detail-modal__item__value">{details.status}</div>
             </div>
             <div className="detail-modal__item">
               <div className="detail-modal__item__title">Species:</div>
-              <div className="detail-modal__item__value">
-                {details?.species}
-              </div>
+              <div className="detail-modal__item__value">{details.species}</div>
             </div>
             <div className="detail-modal__item">
               <div className="detail-modal__item__title">Origin:</div>
               <div className="detail-modal__item__value">
-                {details?.origin.name === "unknown" ? (
-                  <p>{details?.origin.name}</p>
+                {details.origin.name === "unknown" ? (
+                  <p>{details.origin.name}</p>
                 ) : (
-                  <a href={details?.origin.url}>{details?.origin.name}</a>
+                  <a href={details.origin.url}>{details.origin.name}</a>
                 )}
               </div>
             </div>
             <div className="detail-modal__item">
               <div className="detail-modal__item__title">Location:</div>
               <div className="detail-modal__item__value">
-                {details?.location.name === "unknown" ? (
-                  <p>{details?.location.name}</p>
+                {details.location.name === "unknown" ? (
+                  <p>{details.location.name}</p>
                 ) : (
-                  <a href={details?.location.url}>{details?.location.name}</a>
+                  <a href={details.location.url}>{details.location.name}</a>
                 )}
               </div>
             </div>
             <Accordion>
               <Accordion.Item eventKey="0">
-                <Accordion.Header>{`Episodes (${details?.episode.length})`}</Accordion.Header>
+                <Accordion.Header>{`Episodes (${details.episode.length})`}</Accordion.Header>
                 <Accordion.Body>
                   <div className="detail-modal__item__value episodes">
-                    {details?.episode.map((ep: string) => {
-                      return <a href={ep}>{ep.split("episode/")[1]}</a>;
+                    {details.episode.map((ep: string) => {
+                      return (
+                        <a href={ep} key={ep}>
+                          {ep.split("episode/")[1]}
+                        </a>
+                      );
                     })}
                   </div>
                 </Accordion.Body>
