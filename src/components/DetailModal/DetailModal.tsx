@@ -44,36 +44,36 @@ const DetailModal: React.FC = () => {
           </Modal.Header>
           <Modal.Body>
             <div className="detail-modal__item">
-              <div className="detail-modal__item__title">Gender:</div>
-              <div className="detail-modal__item__value">{details.gender}</div>
+              <p className="detail-modal__item__title">Gender:</p>
+              <p className="detail-modal__item__value">{details.gender}</p>
             </div>
             <div className="detail-modal__item">
-              <div className="detail-modal__item__title">Status:</div>
-              <div className="detail-modal__item__value">{details.status}</div>
+              <p className="detail-modal__item__title">Status:</p>
+              <p className="detail-modal__item__value">{details.status}</p>
             </div>
             <div className="detail-modal__item">
-              <div className="detail-modal__item__title">Species:</div>
-              <div className="detail-modal__item__value">{details.species}</div>
+              <p className="detail-modal__item__title">Species:</p>
+              <p className="detail-modal__item__value">{details.species}</p>
             </div>
             <div className="detail-modal__item">
-              <div className="detail-modal__item__title">Origin:</div>
-              <div className="detail-modal__item__value">
+              <p className="detail-modal__item__title">Origin:</p>
+              <p className="detail-modal__item__value">
                 {details.origin.name === "unknown" ? (
                   <p>{details.origin.name}</p>
                 ) : (
                   <a href={details.origin.url}>{details.origin.name}</a>
                 )}
-              </div>
+              </p>
             </div>
             <div className="detail-modal__item">
-              <div className="detail-modal__item__title">Location:</div>
-              <div className="detail-modal__item__value">
+              <p className="detail-modal__item__title">Location:</p>
+              <p className="detail-modal__item__value">
                 {details.location.name === "unknown" ? (
                   <p>{details.location.name}</p>
                 ) : (
                   <a href={details.location.url}>{details.location.name}</a>
                 )}
-              </div>
+              </p>
             </div>
             <Accordion>
               <Accordion.Item eventKey="0">
