@@ -1,4 +1,4 @@
-export interface IInfoState {
+export interface IInfo {
   count: number | null;
   next: string | null;
   pages: number | null;

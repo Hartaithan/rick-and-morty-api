@@ -16,7 +16,7 @@ const List: React.FC = () => {
       ) : (
         <Row>
           {characters.list.map((char: ICharacter) => (
-            <Card char={char} />
+            <Card char={char} key={`${char.id}-${char.name}`} />
           ))}
         </Row>
       )}

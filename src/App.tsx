@@ -6,24 +6,17 @@ import Filters from "./components/Filters/Filters";
 import List from "./components/List/List";
 import DetailModal from "./components/DetailModal/DetailModal";
 import Pagination from "./components/Pagination/Pagination";
-import { IInfoState } from "./models/InfoModel";
 import { IInputsState } from "./models/InputsModel";
 import { ParamsType } from "./models/ParamsModel";
 import Loader from "./components/Loader/Loader";
 import API from "./api";
 import characters from "./store/characters";
 import { observer } from "mobx-react-lite";
+import page from "./store/page";
 
 const App = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [isLoading, setLoading] = React.useState<boolean>(true);
-  const [info, setInfo] = React.useState<IInfoState>({
-    count: null,
-    next: null,
-    pages: null,
-    prev: null,
-  });
-  const [page, setPage] = React.useState<number>(1);
   const [inputs, setInputs] = React.useState<IInputsState>({
     name: searchParams.get("name") || "",
     type: searchParams.get("type") || "",
@@ -34,8 +27,8 @@ const App = () => {
 
   const generateParams = () => {
     const object: ParamsType = {};
-    if (page) {
-      object.page = page.toString();
+    if (page.current) {
+      object.page = page.current.toString();
     }
     if (inputs.name) {
       object.name = inputs.name;
@@ -60,13 +53,13 @@ const App = () => {
     const params = generateParams();
     API.get("/character", { params })
       .then(({ data }) => {
-        setInfo(data.info);
+        page.setInfo(data.info);
         characters.set(data.results);
         setLoading(false);
       })
       .catch(({ response }) => {
         if (response.data.error === "There is nothing here") {
-          setInfo(null);
+          page.resetInfo();
           characters.clear();
         }
         setLoading(false);
@@ -75,7 +68,7 @@ const App = () => {
   };
 
   const handleSubmit = () => {
-    setPage(1);
+    page.setPage(1);
     const queries = generateParams();
     setSearchParams(queries);
     getCharacters();
@@ -83,7 +76,7 @@ const App = () => {
 
   React.useEffect(() => {
     getCharacters();
-  }, [page]); // eslint-disable-line
+  }, [page.current]); // eslint-disable-line
 
   return (
     <Container>
@@ -94,12 +87,7 @@ const App = () => {
       />
       {isLoading ? <Loader /> : <List />}
       <DetailModal />
-      <Pagination
-        info={info}
-        page={page}
-        setPage={setPage}
-        setLoading={setLoading}
-      />
+      <Pagination setLoading={setLoading} />
     </Container>
   );
 };
