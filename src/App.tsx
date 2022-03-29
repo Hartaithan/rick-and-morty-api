@@ -13,6 +13,7 @@ import API, { generateParams } from "./api";
 import characters from "./store/characters";
 import { observer } from "mobx-react-lite";
 import page from "./store/page";
+import filters from "./store/filters";
 
 const App = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -23,6 +24,10 @@ const App = () => {
     setSearchParams(queries);
     characters.get();
   };
+
+  React.useEffect(() => {
+    filters.persistParams(searchParams);
+  }, []);
 
   React.useEffect(() => {
     characters.get();
