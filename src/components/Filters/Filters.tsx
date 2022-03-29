@@ -2,6 +2,8 @@ import React from "react";
 import "./filters.scss";
 import { Col, Row, Form, Button } from "react-bootstrap";
 import { IFilterProps } from "../../models/FilterModel";
+import filters from "../../store/filters";
+import { observer } from "mobx-react-lite";
 
 const Filters: React.FC<IFilterProps> = (props) => {
   const { handleSubmit, inputs, setInputs } = props;
@@ -22,29 +24,29 @@ const Filters: React.FC<IFilterProps> = (props) => {
         <Form.Group as={Col} xs={12} md={4}>
           <Form.Control
             placeholder="Enter name..."
-            onChange={(e) => handleInputs("name", e.target.value)}
-            value={inputs.name}
+            onChange={(e) => filters.setValue("name", e.target.value)}
+            value={filters.inputs.name}
           />
         </Form.Group>
         <Form.Group as={Col} xs={12} md={4}>
           <Form.Control
             placeholder="Enter type..."
-            onChange={(e) => handleInputs("type", e.target.value)}
-            value={inputs.type}
+            onChange={(e) => filters.setValue("type", e.target.value)}
+            value={filters.inputs.type}
           />
         </Form.Group>
         <Form.Group as={Col} xs={12} md={4}>
           <Form.Control
             placeholder="Enter species..."
-            onChange={(e) => handleInputs("species", e.target.value)}
-            value={inputs.species}
+            onChange={(e) => filters.setValue("species", e.target.value)}
+            value={filters.inputs.species}
           />
         </Form.Group>
         <Form.Group as={Col} xs={12} md={4}>
           <Form.Select
             aria-label="Status select"
-            onChange={(e) => handleInputs("status", e.target.value)}
-            value={inputs.status.toLocaleLowerCase()}
+            onChange={(e) => filters.setValue("status", e.target.value)}
+            value={filters.inputs.status.toLocaleLowerCase()}
           >
             <option value="">All statuses</option>
             <option value="alive">Alive</option>
@@ -55,8 +57,8 @@ const Filters: React.FC<IFilterProps> = (props) => {
         <Form.Group as={Col} xs={12} md={4}>
           <Form.Select
             aria-label="Gender select"
-            onChange={(e) => handleInputs("gender", e.target.value)}
-            value={inputs.gender.toLocaleLowerCase()}
+            onChange={(e) => filters.setValue("gender", e.target.value)}
+            value={filters.inputs.gender.toLocaleLowerCase()}
           >
             <option value="">All genders</option>
             <option value="male">Male</option>
@@ -75,4 +77,4 @@ const Filters: React.FC<IFilterProps> = (props) => {
   );
 };
 
-export default Filters;
+export default observer(Filters);

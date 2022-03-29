@@ -5,3 +5,7 @@ export interface IInputsState {
   status: string;
   gender: string;
 }
+
+export interface IInputs {
+  [key: string]: string;
+}
