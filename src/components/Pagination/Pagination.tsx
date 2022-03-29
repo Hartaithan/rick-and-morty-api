@@ -1,15 +1,13 @@
 import React from "react";
 import "./pagination.scss";
 import { Pagination as BPagination } from "react-bootstrap";
-import { IPaginationProps } from "../../models/PaginationModel";
 import page from "../../store/page";
 import { observer } from "mobx-react-lite";
+import characters from "../../store/characters";
 
-const Pagination: React.FC<IPaginationProps> = (props) => {
-  const { setLoading } = props;
-
+const Pagination: React.FC = () => {
   const changePage = (nextPage: number) => {
-    setLoading(true);
+    characters.setLoading(true);
     page.setPage(nextPage);
   };
 

@@ -6,16 +6,12 @@ import filters from "../../store/filters";
 import { observer } from "mobx-react-lite";
 
 const Filters: React.FC<IFilterProps> = (props) => {
-  const { handleSubmit, inputs, setInputs } = props;
+  const { handleSubmit } = props;
 
   const handleKeyDown = (event: React.KeyboardEvent) => {
     if (event.key === "Enter") {
       handleSubmit();
     }
-  };
-
-  const handleInputs = (input: string, value: string) => {
-    setInputs({ ...inputs, [input]: value });
   };
 
   return (
