@@ -9,23 +9,15 @@ const config = {
 
 export const generateParams = () => {
   const object: ParamsType = {};
+  const filtersKeys = ["name", "type", "species", "status", "gender"];
   if (page.current) {
     object.page = page.current.toString();
   }
-  if (filters.inputs.name) {
-    object.name = filters.inputs.name;
-  }
-  if (filters.inputs.type) {
-    object.type = filters.inputs.type;
-  }
-  if (filters.inputs.species) {
-    object.species = filters.inputs.species;
-  }
-  if (filters.inputs.status) {
-    object.status = filters.inputs.status;
-  }
-  if (filters.inputs.gender) {
-    object.gender = filters.inputs.gender;
+  for (let i = 0; i < filtersKeys.length; i++) {
+    const key = filtersKeys[i];
+    if (filters.inputs[key]) {
+      object[key] = filters.inputs[key];
+    }
   }
   return object;
 };
