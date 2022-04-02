@@ -1,11 +1,12 @@
 import React from "react";
 import "./detailModal.scss";
-import { Modal, Accordion } from "react-bootstrap";
+import { Modal, Accordion, OverlayTrigger } from "react-bootstrap";
 import { ICharacter } from "../../models/CharacterModel";
 import Loader from "../Loader/Loader";
 import API from "../../api";
 import modals, { ModalTypes } from "../../store/modals";
 import { observer } from "mobx-react-lite";
+import LocationPopover from "../Popovers/LocationPopover";
 
 const DetailModal: React.FC = () => {
   const [isLoading, setLoading] = React.useState(true);
@@ -59,21 +60,33 @@ const DetailModal: React.FC = () => {
               <p className="detail-modal__item__title">Origin:</p>
               <p className="detail-modal__item__value">
                 {details.origin.name === "unknown" ? (
-                  <p>{details.origin.name}</p>
+                  <text>{details.origin.name}</text>
                 ) : (
-                  <a href={details.origin.url}>{details.origin.name}</a>
+                  <OverlayTrigger
+                    trigger="click"
+                    placement="right"
+                    overlay={<LocationPopover url={details.origin.url} />}
+                  >
+                    <p>{details.origin.name}</p>
+                  </OverlayTrigger>
                 )}
               </p>
             </div>
             <div className="detail-modal__item">
               <p className="detail-modal__item__title">Location:</p>
-              <p className="detail-modal__item__value">
+              <div className="detail-modal__item__value">
                 {details.location.name === "unknown" ? (
-                  <p>{details.location.name}</p>
+                  <text>{details.location.name}</text>
                 ) : (
-                  <a href={details.location.url}>{details.location.name}</a>
+                  <OverlayTrigger
+                    trigger="click"
+                    placement="right"
+                    overlay={<LocationPopover url={details.location.url} />}
+                  >
+                    <p>{details.location.name}</p>
+                  </OverlayTrigger>
                 )}
-              </p>
+              </div>
             </div>
             <Accordion>
               <Accordion.Item eventKey="0">

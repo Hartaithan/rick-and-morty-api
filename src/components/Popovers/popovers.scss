@@ -1,32 +1,9 @@
-.detail-modal {
-  .modal {
-    &-title {
-      display: flex;
-      img {
-        height: 50px;
-        width: 50px;
-      }
-      p {
-        margin: auto 0;
-        margin-left: 12px;
-      }
-    }
-    &-content {
-      min-height: 200px;
-    }
-  }
-  .accordion {
-    margin-top: 12px;
-  }
-  &__avatar {
-    height: 50px;
-    width: 50px;
-  }
+.popover {
   &__item {
     display: flex;
     &__title {
       font-weight: 600;
-      min-width: 100px;
+      min-width: 80px;
     }
     &__value {
       display: flex;
