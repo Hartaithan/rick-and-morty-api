@@ -1,4 +1,5 @@
 import { makeAutoObservable } from "mobx";
+import { IModals } from "../models/ModalModel";
 
 export enum ModalTypes {
   Detail = "detail",
@@ -6,7 +7,9 @@ export enum ModalTypes {
 
 class Modals {
   id: number | null = null;
-  detail: boolean = false;
+  values: IModals = {
+    detail: false,
+  };
 
   constructor() {
     makeAutoObservable(this);
@@ -16,29 +19,20 @@ class Modals {
     if (id) {
       this.id = id;
     }
-    switch (modal) {
-      case ModalTypes.Detail:
-        this.detail = true;
-        break;
-      default:
-        break;
-    }
+    this.values[modal] = true;
   }
 
   close(modal: string) {
-    switch (modal) {
-      case ModalTypes.Detail:
-        this.id = null;
-        this.detail = false;
-        break;
-      default:
-        break;
-    }
+    this.id = null;
+    this.values[modal] = false;
   }
 
   closeAll() {
     this.id = null;
-    this.detail = false;
+    Object.keys(this.values).forEach((key) => {
+      console.log(key);
+      this.values[key] = false;
+    });
   }
 }
 

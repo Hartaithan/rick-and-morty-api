@@ -6,10 +6,8 @@ import Filters from "./components/Filters/Filters";
 import List from "./components/List/List";
 import DetailModal from "./components/DetailModal/DetailModal";
 import Pagination from "./components/Pagination/Pagination";
-import { IInputsState } from "./models/InputsModel";
-import { ParamsType } from "./models/ParamsModel";
 import Loader from "./components/Loader/Loader";
-import API, { generateParams } from "./api";
+import { generateParams } from "./api";
 import characters from "./store/characters";
 import { observer } from "mobx-react-lite";
 import page from "./store/page";
@@ -27,7 +25,7 @@ const App = () => {
 
   React.useEffect(() => {
     filters.persistParams(searchParams);
-  }, []);
+  }, []); // eslint-disable-line
 
   React.useEffect(() => {
     characters.get();

@@ -12,18 +12,18 @@ const DetailModal: React.FC = () => {
   const [details, setDetails] = React.useState<ICharacter | null>(null);
 
   React.useEffect(() => {
-    if (modals.detail) {
+    if (modals.values.detail) {
       API.get(`/character/${modals.id}`).then(({ data }) => {
         setDetails(data);
         setLoading(false);
       });
     }
-  }, [modals.detail]); // eslint-disable-line
+  }, [modals.values.detail]); // eslint-disable-line
 
   return (
     <Modal
       className="detail-modal"
-      show={modals.detail}
+      show={modals.values.detail}
       onHide={() => modals.close(ModalTypes.Detail)}
       onExited={() => setLoading(true)}
       centered
