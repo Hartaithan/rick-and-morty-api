@@ -1,6 +1,7 @@
 import axios from "axios";
 import React from "react";
 import { Popover } from "react-bootstrap";
+import { ILocation } from "../../models/LocationModel";
 import { IPopoverProps } from "../../models/PopoversModel";
 import Loader from "../Loader/Loader";
 import "./popovers.scss";
@@ -8,8 +9,8 @@ import "./popovers.scss";
 const LocationPopover = React.forwardRef<HTMLDivElement, IPopoverProps>(
   (props, ref) => {
     const { url } = props;
-    const [location, setLocation] = React.useState(null);
-    const [isLoading, setLoading] = React.useState(true);
+    const [location, setLocation] = React.useState<ILocation>(null);
+    const [isLoading, setLoading] = React.useState<boolean>(true);
 
     React.useEffect(() => {
       axios
