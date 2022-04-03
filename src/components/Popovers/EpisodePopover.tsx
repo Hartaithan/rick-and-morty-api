@@ -1,6 +1,7 @@
 import axios from "axios";
 import React from "react";
 import { Popover } from "react-bootstrap";
+import { IEpisode } from "../../models/EpisodeModel";
 import { IPopoverProps } from "../../models/PopoversModel";
 import Loader from "../Loader/Loader";
 import "./popovers.scss";
@@ -8,8 +9,8 @@ import "./popovers.scss";
 const EpisodePopover = React.forwardRef<HTMLDivElement, IPopoverProps>(
   (props, ref) => {
     const { url } = props;
-    const [episode, setEpisode] = React.useState(null);
-    const [isLoading, setLoading] = React.useState(true);
+    const [episode, setEpisode] = React.useState<IEpisode>(null);
+    const [isLoading, setLoading] = React.useState<boolean>(true);
 
     React.useEffect(() => {
       axios
