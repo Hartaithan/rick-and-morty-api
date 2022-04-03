@@ -38,7 +38,7 @@
       }
       &.episodes {
         flex-wrap: wrap;
-        a:not(:last-child) {
+        p:not(:last-child) {
           margin-right: 6px;
         }
       }

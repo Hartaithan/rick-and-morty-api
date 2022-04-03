@@ -5,20 +5,20 @@ import { IPopoverProps } from "../../models/PopoversModel";
 import Loader from "../Loader/Loader";
 import "./popovers.scss";
 
-const LocationPopover = React.forwardRef<HTMLDivElement, IPopoverProps>(
+const EpisodePopover = React.forwardRef<HTMLDivElement, IPopoverProps>(
   (props, ref) => {
     const { url } = props;
-    const [location, setLocation] = React.useState(null);
+    const [episode, setEpisode] = React.useState(null);
     const [isLoading, setLoading] = React.useState(true);
 
     React.useEffect(() => {
       axios
         .get(url)
         .then(({ data }) => {
-          setLocation(data);
+          setEpisode(data);
         })
         .catch((error) => {
-          console.error("LocationPopover", error);
+          console.error("EpisodePopover", error);
         })
         .finally(() => {
           setLoading(false);
@@ -35,15 +35,15 @@ const LocationPopover = React.forwardRef<HTMLDivElement, IPopoverProps>(
           <Popover.Body>
             <div className="popover__item">
               <p className="popover__item__title">Name:</p>
-              <p className="popover__item__value">{location.name}</p>
+              <p className="popover__item__value">{episode.name}</p>
             </div>
             <div className="popover__item">
-              <p className="popover__item__title">Type:</p>
-              <p className="popover__item__value">{location.type}</p>
+              <p className="popover__item__title">Episode:</p>
+              <p className="popover__item__value">{episode.episode}</p>
             </div>
             <div className="popover__item">
-              <p className="popover__item__title">Dimension:</p>
-              <p className="popover__item__value">{location.dimension}</p>
+              <p className="popover__item__title">Air date:</p>
+              <p className="popover__item__value">{episode.air_date}</p>
             </div>
           </Popover.Body>
         )}
@@ -52,4 +52,4 @@ const LocationPopover = React.forwardRef<HTMLDivElement, IPopoverProps>(
   }
 );
 
-export default LocationPopover;
+export default EpisodePopover;

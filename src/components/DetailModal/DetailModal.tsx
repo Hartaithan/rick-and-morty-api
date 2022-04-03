@@ -7,6 +7,7 @@ import API from "../../api";
 import modals, { ModalTypes } from "../../store/modals";
 import { observer } from "mobx-react-lite";
 import LocationPopover from "../Popovers/LocationPopover";
+import EpisodePopover from "../Popovers/EpisodePopover";
 
 const DetailModal: React.FC = () => {
   const [isLoading, setLoading] = React.useState(true);
@@ -95,9 +96,13 @@ const DetailModal: React.FC = () => {
                   <div className="detail-modal__item__value episodes">
                     {details.episode.map((ep: string) => {
                       return (
-                        <a href={ep} key={ep}>
-                          {ep.split("episode/")[1]}
-                        </a>
+                        <OverlayTrigger
+                          trigger="click"
+                          placement="right"
+                          overlay={<EpisodePopover url={ep} />}
+                        >
+                          <p>{ep.split("episode/")[1]}</p>
+                        </OverlayTrigger>
                       );
                     })}
                   </div>
