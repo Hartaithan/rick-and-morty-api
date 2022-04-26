@@ -12,6 +12,7 @@ import EpisodePopover from "../Popovers/EpisodePopover";
 const DetailModal: React.FC = () => {
   const [isLoading, setLoading] = React.useState(true);
   const [details, setDetails] = React.useState<ICharacter | null>(null);
+  const modalRef = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
     if (modals.values.detail) {
@@ -44,7 +45,7 @@ const DetailModal: React.FC = () => {
               <p>{details.name}</p>
             </Modal.Title>
           </Modal.Header>
-          <Modal.Body>
+          <Modal.Body ref={modalRef}>
             <div className="detail-modal__item">
               <p className="detail-modal__item__title">Gender:</p>
               <p className="detail-modal__item__value">{details.gender}</p>
@@ -65,7 +66,7 @@ const DetailModal: React.FC = () => {
                 ) : (
                   <OverlayTrigger
                     trigger="click"
-                    placement="top"
+                    placement="auto"
                     overlay={<LocationPopover url={details.origin.url} />}
                   >
                     <p>{details.origin.name}</p>
@@ -81,7 +82,7 @@ const DetailModal: React.FC = () => {
                 ) : (
                   <OverlayTrigger
                     trigger="click"
-                    placement="top"
+                    placement="auto"
                     overlay={<LocationPopover url={details.location.url} />}
                   >
                     <p>{details.location.name}</p>
@@ -98,8 +99,9 @@ const DetailModal: React.FC = () => {
                       return (
                         <OverlayTrigger
                           trigger="click"
-                          placement="top"
+                          placement="auto"
                           overlay={<EpisodePopover url={ep} />}
+                          key={ep}
                         >
                           <p>{ep.split("episode/")[1]}</p>
                         </OverlayTrigger>
