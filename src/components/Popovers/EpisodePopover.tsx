@@ -28,26 +28,26 @@ const EpisodePopover = React.forwardRef<HTMLDivElement, IPopoverProps>(
 
     return (
       <Popover className="popover" id="popover-basic" {...props} ref={ref}>
-        {isLoading ? (
-          <Popover.Body>
+        <Popover.Body>
+          {isLoading ? (
             <Loader />
-          </Popover.Body>
-        ) : (
-          <Popover.Body>
-            <div className="popover__item">
-              <p className="popover__item__title">Name:</p>
-              <p className="popover__item__value">{episode.name}</p>
-            </div>
-            <div className="popover__item">
-              <p className="popover__item__title">Episode:</p>
-              <p className="popover__item__value">{episode.episode}</p>
-            </div>
-            <div className="popover__item">
-              <p className="popover__item__title">Air date:</p>
-              <p className="popover__item__value">{episode.air_date}</p>
-            </div>
-          </Popover.Body>
-        )}
+          ) : (
+            <>
+              <div className="popover__item">
+                <p className="popover__item__title">Name:</p>
+                <p className="popover__item__value">{episode.name}</p>
+              </div>
+              <div className="popover__item">
+                <p className="popover__item__title">Episode:</p>
+                <p className="popover__item__value">{episode.episode}</p>
+              </div>
+              <div className="popover__item">
+                <p className="popover__item__title">Air date:</p>
+                <p className="popover__item__value">{episode.air_date}</p>
+              </div>
+            </>
+          )}
+        </Popover.Body>
       </Popover>
     );
   }

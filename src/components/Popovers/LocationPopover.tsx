@@ -28,26 +28,26 @@ const LocationPopover = React.forwardRef<HTMLDivElement, IPopoverProps>(
 
     return (
       <Popover className="popover" id="popover-basic" {...props} ref={ref}>
-        {isLoading ? (
-          <Popover.Body>
+        <Popover.Body>
+          {isLoading ? (
             <Loader />
-          </Popover.Body>
-        ) : (
-          <Popover.Body>
-            <div className="popover__item">
-              <p className="popover__item__title">Name:</p>
-              <p className="popover__item__value">{location.name}</p>
-            </div>
-            <div className="popover__item">
-              <p className="popover__item__title">Type:</p>
-              <p className="popover__item__value">{location.type}</p>
-            </div>
-            <div className="popover__item">
-              <p className="popover__item__title">Dimension:</p>
-              <p className="popover__item__value">{location.dimension}</p>
-            </div>
-          </Popover.Body>
-        )}
+          ) : (
+            <>
+              <div className="popover__item">
+                <p className="popover__item__title">Name:</p>
+                <p className="popover__item__value">{location.name}</p>
+              </div>
+              <div className="popover__item">
+                <p className="popover__item__title">Type:</p>
+                <p className="popover__item__value">{location.type}</p>
+              </div>
+              <div className="popover__item">
+                <p className="popover__item__title">Dimension:</p>
+                <p className="popover__item__value">{location.dimension}</p>
+              </div>
+            </>
+          )}
+        </Popover.Body>
       </Popover>
     );
   }

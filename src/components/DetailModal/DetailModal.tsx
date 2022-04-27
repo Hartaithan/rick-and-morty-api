@@ -60,7 +60,7 @@ const DetailModal: React.FC = () => {
             </div>
             <div className="detail-modal__item">
               <p className="detail-modal__item__title">Origin:</p>
-              <p className="detail-modal__item__value">
+              <div className="detail-modal__item__value">
                 {details.origin.name === "unknown" ? (
                   <text>{details.origin.name}</text>
                 ) : (
@@ -72,7 +72,7 @@ const DetailModal: React.FC = () => {
                     <p>{details.origin.name}</p>
                   </OverlayTrigger>
                 )}
-              </p>
+              </div>
             </div>
             <div className="detail-modal__item">
               <p className="detail-modal__item__title">Location:</p>
