@@ -68,6 +68,7 @@ const DetailModal: React.FC = () => {
                     trigger="click"
                     placement="auto"
                     overlay={<LocationPopover url={details.origin.url} />}
+                    container={modalRef}
                   >
                     <p>{details.origin.name}</p>
                   </OverlayTrigger>
@@ -84,6 +85,7 @@ const DetailModal: React.FC = () => {
                     trigger="click"
                     placement="auto"
                     overlay={<LocationPopover url={details.location.url} />}
+                    container={modalRef}
                   >
                     <p>{details.location.name}</p>
                   </OverlayTrigger>
@@ -101,6 +103,7 @@ const DetailModal: React.FC = () => {
                           trigger="click"
                           placement="auto"
                           overlay={<EpisodePopover url={ep} />}
+                          container={modalRef}
                           key={ep}
                         >
                           <p>{ep.split("episode/")[1]}</p>

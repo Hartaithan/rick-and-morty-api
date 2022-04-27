@@ -27,7 +27,7 @@ const EpisodePopover = React.forwardRef<HTMLDivElement, IPopoverProps>(
     }, []); // eslint-disable-line
 
     return (
-      <Popover className="popover" id="popover-basic" {...props} ref={ref}>
+      <Popover className="popover" id="popover-basic" ref={ref} {...props}>
         <Popover.Body>
           {isLoading ? (
             <Loader />
