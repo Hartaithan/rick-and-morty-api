@@ -8,9 +8,13 @@ import "./popovers.scss";
 
 const LocationPopover = React.forwardRef<HTMLDivElement, IPopoverProps>(
   (props, ref) => {
-    const { url } = props;
+    const { url, popper } = props;
     const [location, setLocation] = React.useState<ILocation>(null);
     const [isLoading, setLoading] = React.useState<boolean>(true);
+
+    React.useEffect(() => {
+      popper.scheduleUpdate();
+    }, [isLoading, popper]);
 
     React.useEffect(() => {
       axios

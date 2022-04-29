@@ -8,9 +8,13 @@ import "./popovers.scss";
 
 const EpisodePopover = React.forwardRef<HTMLDivElement, IPopoverProps>(
   (props, ref) => {
-    const { url } = props;
+    const { url, popper } = props;
     const [episode, setEpisode] = React.useState<IEpisode>(null);
     const [isLoading, setLoading] = React.useState<boolean>(true);
+
+    React.useEffect(() => {
+      popper.scheduleUpdate();
+    }, [isLoading, popper]);
 
     React.useEffect(() => {
       axios
