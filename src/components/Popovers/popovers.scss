@@ -1,4 +1,11 @@
 .popover {
+  & > .popover-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 230px;
+    min-height: 100px;
+  }
   &__item {
     display: flex;
     &__title {
