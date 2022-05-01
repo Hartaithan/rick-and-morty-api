@@ -73,9 +73,6 @@
 }
 
 @media (max-width: 992px) {
-}
-
-@media (max-width: 768px) {
   .list {
     .card {
       &__col {
@@ -87,7 +84,7 @@
   }
 }
 
-@media (max-width: 576px) {
+@media (max-width: 768px) {
   .list {
     .card {
       &__col {
@@ -97,6 +94,9 @@
       }
     }
   }
+}
+
+@media (max-width: 576px) {
 }
 
 @media (max-width: 320px) {

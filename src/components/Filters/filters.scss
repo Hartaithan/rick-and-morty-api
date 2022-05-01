@@ -27,9 +27,6 @@
 }
 
 @media (max-width: 768px) {
-}
-
-@media (max-width: 576px) {
   .filters {
     .row {
       & > div {
@@ -39,6 +36,9 @@
       }
     }
   }
+}
+
+@media (max-width: 576px) {
 }
 
 @media (max-width: 320px) {
